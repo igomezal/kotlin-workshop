@@ -10,10 +10,11 @@ fun main(args: Array<String>) {
 
 // Return all products that were ordered by customer
 val Customer.orderedProducts: Set<Product> get() {
-    TODO()
+    // Can be solve with this.orders.map { order -> order.products }.flatten().toSet()
+    return this.orders.flatMap { order -> order.products }.toSet()
 }
 
 // Return all products that were ordered by at least one customer
 val Shop.allOrderedProducts: Set<Product> get() {
-    TODO()
+    return this.customers.flatMap { customer -> customer.orderedProducts }.toSet()
 }

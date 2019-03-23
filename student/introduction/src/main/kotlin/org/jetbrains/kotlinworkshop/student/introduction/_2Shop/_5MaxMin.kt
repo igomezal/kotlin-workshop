@@ -10,10 +10,10 @@ fun main(args: Array<String>) {
 
 // Return a customer whose order count is the highest among all customers
 fun Shop.getCustomerWithMaximumNumberOfOrders(): Customer? {
-    TODO()
+    return this.customers.maxBy { customer -> customer.orders.size }
 }
 
 // Return the most expensive product which has been ordered
 fun Customer.getMostExpensiveOrderedProduct(): Product? {
-    TODO()
+    return this.orders.flatMap { order -> order.products }.maxBy { product -> product.price }
 }
