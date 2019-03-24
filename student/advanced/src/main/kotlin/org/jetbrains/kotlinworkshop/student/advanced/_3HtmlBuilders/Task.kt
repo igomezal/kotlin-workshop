@@ -13,7 +13,7 @@ You can run the 'Html Demo' configuration in IntelliJ IDEA to see the rendered t
 fun renderProductTable(): String {
     return html {
         table {
-            tr {
+            tr(getTitleColor()) {
                 td {
                     text("Product")
                 }
@@ -25,7 +25,19 @@ fun renderProductTable(): String {
                 }
             }
             val products = getProducts()
-
+            products.forEachIndexed {index, product ->
+                tr {
+                    td(getCellColor(index, 0)) {
+                        text(product.description)
+                    }
+                    td(getCellColor(index, 1)) {
+                        text(product.price)
+                    }
+                    td(getCellColor(index, 2)) {
+                        text(product.popularity)
+                    }
+                }
+            }
         }
     }.toString()
 }
