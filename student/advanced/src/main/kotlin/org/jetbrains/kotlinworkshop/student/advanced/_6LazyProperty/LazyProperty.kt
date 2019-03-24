@@ -7,5 +7,12 @@ package org.jetbrains.kotlinworkshop.student.advanced._6LazyProperty
 // Do not use delegated properties!
 
 class LazyProperty(val initializer: () -> Int) {
-    val lazy: Int = TODO()
+    private val myLazy: Int? = null
+        get() {
+            if (field == null) field = initializer()
+            return field
+        }
+
+    val lazy: Int
+        get() = myLazy!!
 }

@@ -8,6 +8,7 @@ class NPEDuringInitialization {
     @Test
     fun testSubclassInitialization() {
         assertFailsWith<NullPointerException> {
+            A("b")
             B("abc")
         }
     }
